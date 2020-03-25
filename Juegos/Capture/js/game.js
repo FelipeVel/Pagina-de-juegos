@@ -1,16 +1,7 @@
-// Original game from:
-// http://www.lostdecadegames.com/how-to-make-a-simple-html5-canvas-game/
-// Slight modifications by Gregorio Robles <grex@gsyc.urjc.es>
-// to meet the criteria of a canvas class for DAT @ Univ. Rey Juan Carlos
-
-// Create the canvas
 var canvas = document.getElementById("miCanvas");
 var ctx = canvas.getContext("2d");
 canvas.width = 512;
 canvas.height = 480;
-//document.body.appendChild(canvas);
-
-// Background image
 var bgReady = false;
 var bgImage = new Image();
 bgImage.onload = function () {
@@ -18,7 +9,6 @@ bgImage.onload = function () {
 };
 bgImage.src = "Juegos/Capture/images/background.png";
 
-// Hero image
 var heroReady = false;
 var heroImage = new Image();
 heroImage.onload = function () {
@@ -110,6 +100,10 @@ var render = function () {
 	//ctx.textAlign = "left";
 	ctx.textBaseline = "top";
 	ctx.fillText("Princesses caught: " + princessesCaught, 32, 32);
+	var max = localStorage.getItem("puntaje-capture");
+	if (princessesCaught>max){
+		localStorage.setItem("puntaje-capture", princessesCaught);
+	}
 };
 
 // The main game loop

@@ -118,6 +118,10 @@ function dibujarTubos(){
 
         if(tubo[i].x == 5){
             nivel.puntuacion++;
+            var max = localStorage.getItem("puntaje-mario");
+	          if (nivel.puntuacion>max){
+		          localStorage.setItem("puntaje-mario", nivel.puntuacion);
+	          }
         }
 
 

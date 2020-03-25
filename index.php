@@ -1,4 +1,15 @@
+<script>
+    var puntajeBreakout = localStorage.getItem("puntaje-breakout");
+    var puntajeCapture = localStorage.getItem("puntaje-capture");
+    var puntajeMario = localStorage.getItem("puntaje-mario");
+    var puntajePacman = localStorage.getItem("puntaje-pacman");
+</script>  
 <?php
+
+$puntajeB = "<script> document.writeln(puntajeBreakout); </script>";
+$puntajeC = "<script> document.writeln(puntajeCapture); </script>";
+$puntajeM = "<script> document.writeln(puntajeMario); </script>";
+$puntajeP = "<script> document.writeln(puntajePacman); </script>";
 
 // Genero: ProgramasProgramacion.com
 echo "<!DOCTYPE html>\n";
@@ -11,10 +22,8 @@ echo "    <title>Pagina principal</title>\n";
 echo "    <link rel=\"stylesheet\" type=\"text/css\" href=\"css/bootstrap.min.css\">\n";
 echo "</head>\n";
 echo "<body background=\"Capturas/fondo.png\">\n";
-echo "    <div class=\"container\">\n";
-echo "        <div class=\"row\" style=\"height:100px\">\n";
+echo "    <div class=\"container\" style=\"background-color: white;\">\n";
 echo "\n";
-echo "        </div>\n";
 echo "        <div class=\"row\" style=\"height:50px\">\n";
 echo "\n";
 echo "        </div>\n";
@@ -24,7 +33,7 @@ echo "                <div class=\"card\" style=\"width: 18rem;\">\n";
 echo "                    <img src=\"Capturas/Breakout.png\" class=\"card-img-top\" alt=\"...\" width=\"100\" height=\"100\">\n";
 echo "                    <div class=\"card-body\">\n";
 echo "                        <h5 class=\"card-title\">Breakout</h5>\n";
-echo "                        <a href=\"juego.php?id=Breakout\" class=\"btn btn-primary\" id=\"breakout\" onclick=\"guardar('Breakout')\">Jugar</a>\n";
+echo "                        <a href=\"juego.php?id=Breakout&max=".$puntajeB."\" class=\"btn btn-primary\" id=\"breakout\" onclick=\"guardar('Breakout')\">Jugar</a>\n";
 echo "                    </div>\n";
 echo "                </div>\n";
 echo "            </div>\n";
@@ -34,7 +43,7 @@ echo "                <div class=\"card\" style=\"width: 18rem;\">\n";
 echo "                    <img src=\"Capturas/Capture.png\" class=\"card-img-top\" alt=\"...\" width=\"100\" height=\"100\">\n";
 echo "                    <div class=\"card-body\">\n";
 echo "                        <h5 class=\"card-title\">Capture the princess</h5>\n";
-echo "                        <a href=\"juego.php?id=Capture\" class=\"btn btn-primary\" id=\"Capture\" onclick=\"guardar('Capture')\">Jugar</a>\n";
+echo "                        <a href=\"juego.php?id=Capture&max=".$puntajeC."\" class=\"btn btn-primary\" id=\"Capture\" onclick=\"guardar('Capture')\">Jugar</a>\n";
 echo "                    </div>\n";
 echo "                </div>\n";
 echo "            </div>\n";
@@ -44,7 +53,7 @@ echo "                <div class=\"card\" style=\"width: 18rem;\">\n";
 echo "                    <img src=\"Capturas/FlappyMario.PNG\" class=\"card-img-top\" alt=\"...\" width=\"100\" height=\"100\">\n";
 echo "                    <div class=\"card-body\">\n";
 echo "                        <h5 class=\"card-title\">Flappy Mario</h5>\n";
-echo "                        <a href=\"juego.php?id=FlappyMario\" class=\"btn btn-primary\" id=\"flappyMario\" onclick=\"guardar('FlappyMario')\">Jugar</a>\n";
+echo "                        <a href=\"juego.php?id=FlappyMario&max=".$puntajeM."\" class=\"btn btn-primary\" id=\"flappyMario\" onclick=\"guardar('FlappyMario')\">Jugar</a>\n";
 echo "                    </div>\n";
 echo "                </div>\n";
 echo "            </div>\n";
@@ -63,13 +72,18 @@ echo "                <div class=\"card\" style=\"width: 18rem;\">\n";
 echo "                    <img src=\"Capturas/Pacman.png\" class=\"card-img-top\" alt=\"...\" width=\"100\" height=\"100\">\n";
 echo "                    <div class=\"card-body\">\n";
 echo "                        <h5 class=\"card-title\">Pacman</h5>\n";
-echo "                        <a href=\"juego.php?id=Pacman\" class=\"btn btn-primary\" id=\"Pacman\" onclick=\"guardar('Pacman')\">Jugar</a>\n";
+echo "                        <a href=\"juego.php?id=Pacman&max=".$puntajeP."\" class=\"btn btn-primary\" id=\"Pacman\" onclick=\"guardar('Pacman')\">Jugar</a>\n";
 echo "                    </div>\n";
 echo "                </div>\n";
 echo "                </center>\n";
 echo "            </div>\n";
 echo "            \n";
 echo "            <div class=\"col-4\">\n";
+echo "            <h3 class=\"title\">Puntajes máximos:</h3>\n";
+echo "            <h5>Breakout: ".$puntajeB."</h5>\n";
+echo "            <h5>Capture: ".$puntajeC."</h5>\n";
+echo "            <h5>Mario: ".$puntajeM."</h5>\n";
+echo "            <h5>PacMan: ".$puntajeP."</h5>\n";
 echo "            </div>\n";
 echo "        </div>\n";
 echo "    </div>\n";

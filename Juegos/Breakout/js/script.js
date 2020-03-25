@@ -66,8 +66,8 @@ function juego() {
         } else {
             contexto.font = "bold 22px sans-serif";
             contexto.fillText("Fin juego", micanvas.height / 2, micanvas.width / 2);
-            sleep();
-            document.location.reload();
+            contexto.fillText("Refresca para volver a intentarlo", (micanvas.height / 2)-100, (micanvas.width / 2)+30);
+            return;
         }
     }
 
@@ -115,6 +115,10 @@ function deteccionColicion() {
                     cambioY = -cambioY;
                     b.estado = 0;
                     puntos++;
+                    var max = localStorage.getItem("puntaje-breakout");
+                    if (puntos>max){
+                        localStorage.setItem("puntaje-breakout", puntos);
+                    }
                     puntosMostrar++;
                     colorbola = Math.floor(Math.random() * 10000);
                     if (puntos == filaLadrillos * columnaLadrillos && filaLadrillos < 4) {
@@ -136,7 +140,7 @@ function deteccionColicion() {
 
                     }
                     if (puntos == filaLadrillos * columnaLadrillos && filaLadrillos == 4) {
-                        alert("ganaste waaaaaaaaaaaapo");
+                        alert("ganaste");
                         document.location.reload();
                     }
 

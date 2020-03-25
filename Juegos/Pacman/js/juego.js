@@ -205,6 +205,10 @@ function ponerMenu(context, main){
 			context.fillText("Clic para empezar", 130, 350);
 	}else{
 		context.fillText("Puntaje: "+puntaje, 140, 320);
+		var max = localStorage.getItem("puntaje-pacman");
+		if (puntaje>max){
+			localStorage.setItem("puntaje-pacman", puntaje);
+		}
 		if(cont % 50 < 25)
 			context.fillText("Clic para volver a jugar", 110, 350);
 	}

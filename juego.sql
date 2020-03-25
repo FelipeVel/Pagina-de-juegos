@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-03-2020 a las 05:48:11
+-- Tiempo de generación: 25-03-2020 a las 07:41:07
 -- Versión del servidor: 10.3.16-MariaDB
 -- Versión de PHP: 7.3.6
 
@@ -32,19 +32,18 @@ CREATE TABLE `juego` (
   `Titulo` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `Link` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Imagen` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `Categoria` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `Puntaje` int(11) NOT NULL
+  `Categoria` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `juego`
 --
 
-INSERT INTO `juego` (`Titulo`, `Link`, `Imagen`, `Categoria`, `Puntaje`) VALUES
-('Breakout', 'Juegos/Breakout/js/script.js', 'Capturas/Breakout.png', 'Accion', 0),
-('FlappyMario', 'Juegos/FlappyBird/juego.js', 'Capturas/FlappyMario.PNG', 'Aventura', 0),
-('Capture', 'Juegos/Capture/js/game.js', 'Capturas/Capture.png', 'Aventura', 0),
-('Pacman', 'Juegos/Pacman/js/bloques.js', 'Capturas/Pacman.png', 'Accion', 0);
+INSERT INTO `juego` (`Titulo`, `Link`, `Imagen`, `Categoria`) VALUES
+('Breakout', 'Juegos/Breakout/js/script.js', 'Capturas/Breakout.png', 'Accion'),
+('FlappyMario', 'Juegos/FlappyBird/juego.js', 'Capturas/FlappyMario.PNG', 'Aventura'),
+('Capture', 'Juegos/Capture/js/game.js', 'Capturas/Capture.png', 'Aventura'),
+('Pacman', 'Juegos/Pacman/js/bloques.js', 'Capturas/Pacman.png', 'Accion');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,5 +1,13 @@
+<script>
+    var puntajeBreakout = localStorage.getItem("puntaje-breakout");
+    var puntajeCapture = localStorage.getItem("puntaje-capture");
+    var puntajeMario = localStorage.getItem("puntaje-mario");
+    var puntajePacman = localStorage.getItem("puntaje-pacman");
+</script> 
+
 <?php
 	$v1=$_GET['id'];
+	$punt=$_GET['max'];
 	$usuario = "root";
 	$contrasena = "";  // en mi caso tengo contraseña pero en cada caso introducir aqui.
 	$servidor = "localhost";
@@ -40,6 +48,7 @@
 	$row=mysqli_fetch_array($resultado);
 	$t=$row['Titulo'];
 
+
 // Genero: ProgramasProgramacion.com
 echo "<!DOCTYPE html>\n";
 echo "\n";
@@ -57,7 +66,7 @@ echo "		  <h1>";
 echo $v1;
 echo "		  </h1>\n";
 echo "		  <a href=\"index.php\" class=\"btn btn-primary\">Inicio</a>\n";
-echo "        <div class=\"row\" style=\"height:100px\"></div>\n";
+echo "        <div class=\"row\" style=\"height:30px\"></div>\n";
 echo "        <div class=\"row\">\n";
 echo "            <div class=\"col-8\" id=\"bloque_juego\">\n";
 echo "                <canvas id=\"miCanvas\" width=\"580\" height=\"420\" style=\"border:2px solid #000000;background-color: black;\">Su navegador no es compatible</canvas>\n";
@@ -77,6 +86,8 @@ echo "                    </div>\n";
 echo "                </div>\n";
 echo "            </div>\n";
 echo "        </div>\n";
+
+echo "        <h2 class=\"title\">Puntaje maximo:	".$punt."</h2>\n";
 echo "    </div>\n";
 echo "\n";
 echo "    <script src=\"js/jquery-3.3.1.slim.min.js\"></script>\n";

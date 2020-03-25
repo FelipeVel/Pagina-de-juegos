@@ -16,8 +16,29 @@
 
 	$row=mysqli_fetch_array($resultado);
 	$r=$row['Link'];
-	echo $v1;
-	echo "...".$r;
+
+	$consulta = "SELECT Categoria FROM `juego` WHERE Titulo = '".$v1."'";
+	
+	$resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha salido mal en la consulta a la base de datos");
+	
+	$row=mysqli_fetch_array($resultado);
+	$c=$row['Categoria'];
+
+	
+	$consulta_imagen = "SELECT Imagen FROM `juego` WHERE Categoria ='".$c."'";
+	
+	$resultado_imagen = mysqli_query($conexion,$consulta_imagen)or die ( "Algo ha salido mal en la consulta a la base de datos");
+	
+	$rowI = mysqli_fetch_array($resultado_imagen);	
+	
+	$i=$rowI['Imagen'];
+
+	$consulta = "SELECT Titulo FROM `juego` WHERE Categoria ='".$c."'";
+	
+	$resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha salido mal en la consulta a la base de datos");
+	
+	$row=mysqli_fetch_array($resultado);
+	$t=$row['Titulo'];
 
 // Genero: ProgramasProgramacion.com
 echo "<!DOCTYPE html>\n";
@@ -26,51 +47,31 @@ echo "<html lang=\"es-co\" xmlns=\"http://www.w3.org/1999/xhtml\">\n";
 echo "<head>\n";
 echo "    <meta charset=\"utf-8\" />\n";
 echo "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">\n";
-echo "    <title>Juego</title>\n";
+echo "    <title>Juego:".$v1."</title>\n";
 echo "    <link rel=\"stylesheet\" type=\"text/css\" href=\"css/bootstrap.min.css\">\n";
 echo "	  <script type=\"text/javascript\" src=\"$r\"></script>\n";
 echo "</head>\n";
-echo "<body>\n";
-echo "<h1>";
+echo "<body background=\"Capturas/fondo.png\">\n";
+echo "    <div class=\"container\" style=\"background-color: white;\">\n";
+echo "		  <h1>";
 echo $v1;
-echo "</h1>\n";
-echo "    <div class=\"container\">\n";
+echo "		  </h1>\n";
+echo "		  <a href=\"index.php\" class=\"btn btn-primary\">Inicio</a>\n";
 echo "        <div class=\"row\" style=\"height:100px\"></div>\n";
 echo "        <div class=\"row\">\n";
 echo "            <div class=\"col-8\" id=\"bloque_juego\">\n";
-echo "                <canvas id=\"miCanvas\" width=\"580\" height=\"420\" style=\"border:2px solid #000000;\">Su navegador no es compatible</canvas>\n";
+echo "                <canvas id=\"miCanvas\" width=\"580\" height=\"420\" style=\"border:2px solid #000000;background-color: black;\">Su navegador no es compatible</canvas>\n";
 echo "            </div>\n";
-echo "            <div class=\"col-4\">\n";
+echo "            <div class=\"col-4\" style=\"background-color: white;\">\n";
 echo "                <div class=\"row\">\n";
-echo "                    <h1>Relacionados:</h1>\n";
+echo "                    <h1>Relacionados: $c</h1>\n";
 echo "                </div>\n";
-echo "                <div class=\"row\">\n";
+echo "                <div class=\"row\" style=\"background-color: white;\">\n";
 echo "                    <div class=\"card\" style=\"width: 18rem;\">\n";
-echo "                        <img src=\"Capturas/Flappy bird.jpg\" class=\"card-img-top\" alt=\"...\" width=\"100\" height=\"100\">\n";
+echo "                        <img src=\"".$i."\" class=\"card-img-top\" alt=\"...\" width=\"100\" height=\"100\">\n";
 echo "                        <div class=\"card-body\">\n";
-echo "                            <h5 class=\"card-title\">Flappy bird</h5>\n";
-echo "                            <p class=\"card-text\">Gracias a la migracion actual de aves, nuestro ami...</p>\n";
-echo "                            <a href=\"juego.html\" class=\"btn btn-primary\" id=\"flappy\">Jugar</a>\n";
-echo "                        </div>\n";
-echo "                    </div>\n";
-echo "                </div>\n";
-echo "                <div class=\"row\">\n";
-echo "                    <div class=\"card\" style=\"width: 18rem;\">\n";
-echo "                        <img src=\"Capturas/Flappy bird.jpg\" class=\"card-img-top\" alt=\"...\" width=\"100\" height=\"100\">\n";
-echo "                        <div class=\"card-body\">\n";
-echo "                            <h5 class=\"card-title\">Flappy bird</h5>\n";
-echo "                            <p class=\"card-text\">Gracias a la migraci�n actual de aves, nuestro ami...</p>\n";
-echo "                            <a href=\"juego.html\" class=\"btn btn-primary\" id=\"flappy\">Jugar</a>\n";
-echo "                        </div>\n";
-echo "                    </div>\n";
-echo "                </div>\n";
-echo "                <div class=\"row\">\n";
-echo "                    <div class=\"card\" style=\"width: 18rem;\">\n";
-echo "                        <img src=\"Capturas/Flappy bird.jpg\" class=\"card-img-top\" alt=\"...\" width=\"100\" height=\"100\">\n";
-echo "                        <div class=\"card-body\">\n";
-echo "                            <h5 class=\"card-title\">Flappy bird</h5>\n";
-echo "                            <p class=\"card-text\">Gracias a la migraci�n actual de aves, nuestro ami...</p>\n";
-echo "                            <a href=\"juego.html\" class=\"btn btn-primary\" id=\"flappy\">Jugar</a>\n";
+echo "                            <h5 class=\"card-title\">".$t."</h5>\n";
+echo "                            <a href=\"juego.php?id=".$t."\" class=\"btn btn-primary\" id=\"".$t."\" onclick=\"guardar('".$t."')\">Jugar ".$t."</a>\n";
 echo "                        </div>\n";
 echo "                    </div>\n";
 echo "                </div>\n";

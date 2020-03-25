@@ -1,3 +1,4 @@
+$(document).ready(inicializar);
 var jugando = false;
 var contador = 0;
 var habilitado = true;
